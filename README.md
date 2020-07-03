@@ -3,6 +3,8 @@
 # これはなに？
 PHPStormとXDebugでBreakpointを入れてデバッグをしたかったが全然設定がうまく行かなかったのでまっさらから初めて記録しておく
 
+# 書き始めた日付
+2020/07/03
 
 # 使うもの
 ## XDebug
@@ -26,9 +28,12 @@ Docker version 19.03.8, build afacb8b
 # Let's 
 
 ## docker
+Dockerfile, php.ini はどなたかのサンプルを参考に作成
+localhostでのindex.htmlのアクセスは成功
 
 ## PHP
+php7.3
 
 ## config
-
+docker/php/php.ini
 
