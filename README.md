@@ -54,9 +54,8 @@ https://xdebug.org/wizard
 # 動いたのでPHPStormと連動
 
 ## PHPStorm
-https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html#integrationWithProduct
 
-## Configure Xdebug in PhpStorm
+### Configure Xdebug in PhpStorm
 PhpStorm でフォルダを開く
 Settings/Preference > Languages & Frameworks > PHP
 
@@ -65,10 +64,16 @@ CLI Interpreter: docker-compose の php を指定する
 Settings/Preference > Languages & Frameworks > PHP > Debug
 Portの確認程度
 
-## php.ini
-xdebug.remote_enable=1
+## php.ini(抜粋)
+[xdebug]
+zend_extension="/usr/local/lib/php/extensions/no-debug-non-zts-20180731/xdebug.so"
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1
 xdebug.remote_host=host.docker.internal
-を足す
+xdebug.remote_port = 9000
+xdebug.remote_log = /tmp/xdebug.log
+xdebug.idekey = "PHPSTORM"
+
 
 https://www.jetbrains.com/help/phpstorm/validating-the-configuration-of-the-debugging-engine.html#troubleshooting-validation-results
 の検証をやってみる
@@ -80,26 +85,27 @@ Url to validation script: http:/localhost/
 debug protocol '' is not supported phpstorm
 だけエラーが出たが無視して良さそう
 
-## Brower Debug extension
+## Chrome Brower Debug extension
 使っている（Chrome）ものをインストール
 
-## Server
+## PHPStorm Server
 Settings/Preference > Languages & Frameworks > PHP > Server
 +
 Name:local-docker
 Host:localhost
 Port:80
 Debugger:Xdebug
-Use path mappings はドキュメントルートを設定
+Use path mappings: public -> /var/www/html/public
 
-
+## 
 Menu > Run > Edit Configuration
-+ > PHP Web Page
-Name: any
++ > PHP Remote Debug
+Name: docker-remote-debug
 Server: local-docker
-Start URL: /index.php
-Browser: Chrome (DefaultがChromeのアイコンだったが見事にSafariが立上る）
-
-Breakpoint で止まらない
+IDE key: PHPSTORM
 
 
+# PHPStorm でデバッグを始める
+Breakpointを設定して
+Run > Start Listening for PHP Debug Connections を押す
+ブラウザでアクセスする
