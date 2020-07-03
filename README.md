@@ -32,7 +32,7 @@ Dockerfile, php.ini はどなたかのサンプルを参考に作成
 localhostでのindex.htmlのアクセスは成功
 
 ## PHP
-php7.3
+php7.3-apache
 
 ## config
 docker/php/php.ini
